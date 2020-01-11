@@ -19,9 +19,18 @@ public class GameManager : MonoBehaviour
         {
             hardRestartGame();
         }
+        if(Input.GetKey(KeyCode.G))
+        {
+            ForceGameOver();
+        }
     }
     void hardRestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    static void ForceGameOver()
+    {
+        
     }
 }
