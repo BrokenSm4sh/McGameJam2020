@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerStamina : MonoBehaviour
 {
     [Range(0, 100)] 
-    private float staminaDecreaseRate;
+    public float staminaDecreaseRate;
     private float staminaPoints;
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,14 @@ public class PlayerStamina : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        staminaDecreaseRate = 0;
+        staminaPoints -= staminaDecreaseRate * Time.deltaTime;
+      //  Debug.Log(staminaPoints);
+        if (staminaPoints <= 0)
+        {
+            AppManager.GetGameInstance().ForceGameOver();
+            
+        }
     }
+    
+    
 }
