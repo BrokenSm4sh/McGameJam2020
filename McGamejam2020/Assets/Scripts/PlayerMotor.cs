@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
 {
+    public GameObject Camera;
+
     public float MAX_SPEED;
     public float VELOCIT_LERP_INCREMENT = 0.1f;
     private float velocityLerpTime;
@@ -44,7 +46,13 @@ public class PlayerMotor : MonoBehaviour
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
 
-            Vector3 direction = new Vector3(horizontalInput, 0, verticalInput);
+            Debug.Log("Horizontal: " + Input.GetAxis("Horizontal"));
+            Debug.Log("Vertical: " + Input.GetAxis("Vertical"));
+
+            Vector3 direction = new Vector3(
+                (horizontalInput + Camera.transform.forward.x * 2f), 
+                0, 
+                (verticalInput + Camera.transform.right.z * 2f));
             rb.velocity = direction;
             
 

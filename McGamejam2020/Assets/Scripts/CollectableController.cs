@@ -20,7 +20,6 @@ public class CollectableController : MonoBehaviour
 
         // register event listener
         PlayerController.onPickUp += OnCollecPickedUp;
-        PlayerController.onPutDown += OnCollecPutDown;
 
     }
 
@@ -45,6 +44,5 @@ public class CollectableController : MonoBehaviour
 
     private void OnDisable() {
         PlayerController.onPickUp -= OnCollecPickedUp;
-        PlayerController.onPutDown -= OnCollecPutDown;
     }
 }

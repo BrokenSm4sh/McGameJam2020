@@ -5,6 +5,7 @@ using UnityEngine;
 public class FollowCamera : MonoBehaviour {
     // fields for camera movement;
     public GameObject player;
+    public float rotSpeed;
 
     Transform cameraTrfm;
     Transform playerTrfm;
@@ -24,10 +25,14 @@ public class FollowCamera : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
+        float rotX = Input.GetAxis("Mouse X") * rotSpeed * Mathf.Deg2Rad;
+        float rotY = Input.GetAxis("Mouse Y") * rotSpeed * Mathf.Deg2Rad;
+        transform.Rotate(Vector3.up, rotX);
+        transform.Rotate(Vector3.right, -rotY);
     }
 
     private void LateUpdate() {
         cameraTrfm.position = player.transform.position + offset;
     }
+
 }
