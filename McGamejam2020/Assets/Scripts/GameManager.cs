@@ -5,11 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    private  Canvas gameOverScreen;
 
+    private bool isPaused;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        isPaused = false;
     }
 
     // Update is called once per frame
@@ -23,14 +27,45 @@ public class GameManager : MonoBehaviour
         {
             ForceGameOver();
         }
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            if (!isPaused)
+            {
+                PauseGame();
+            }
+            else
+            {
+                ContinueGame();
+            }
+        }
+       
+        
     }
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0;
+        isPaused = true;
+        //pausePanel.SetActive(true);
+        //Disable scripts that still work while timescale is set to 0
+    } 
+    private void ContinueGame()
+    {
+        Time.timeScale = 1;
+        isPaused = false;
+        //pausePanel.SetActive(false);
+        //enable the scripts again
+    }
+
     void hardRestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        gameOverScreen.gameObject.SetActive(false);
+
     }
 
-    static void ForceGameOver()
+    public void ForceGameOver()
     {
-        
+        gameOverScreen.gameObject.SetActive(true);
     }
 }

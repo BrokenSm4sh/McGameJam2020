@@ -46,10 +46,10 @@ public class CameraMain : MonoBehaviour
             // transform.RotateAround(subject.transform.position, new Vector3(0, 0, 0.5f), 1);
             transform.Translate(new Vector3(0, 0.5f,0));
         }
-        //else
-        //{
-        //    transform.position = subject.transform.position + offset;
-        //}
+        else
+        {
+            // transform.position = subject.transform.position + offset;
+        }
         transform.LookAt(subject.transform, Vector3.up);
 
     }
