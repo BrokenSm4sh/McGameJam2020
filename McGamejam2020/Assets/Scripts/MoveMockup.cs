@@ -28,7 +28,7 @@ public class MoveMockup : MonoBehaviour
         if (Input.GetKey(KeyCode.S))
         {
             Debug.Log("s");
-            rgbd.velocity +=  -Camera.main.transform.forward;
+            rgbd.velocity += -Camera.main.transform.forward;
         }
         if (Input.GetKey(KeyCode.D))
         {
