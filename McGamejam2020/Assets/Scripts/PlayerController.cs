@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public delegate void CollectableAction();
-    public static event CollectableAction onPickUp;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +14,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E)) {
-            onPickUp();
+            GameObject.FindGameObjectWithTag("okToPickUp")
+                .GetComponent<CollectableController>().pickUp();
         }
     }
 }

@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIController : MonoBehaviour
+public class CollectableUIController : MonoBehaviour
 {
     private GameObject camera;
     private GameObject player;
     private GameObject nearbyPrompt;
     private GameObject positionInticator;
 
-    private bool isPickedUp = false;
-
     public float pickUpAvailableDistance;
+
+    [HideInInspector]
+    public bool isPickedUp = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,9 +27,6 @@ public class UIController : MonoBehaviour
         // reference event camera
         gameObject.GetComponent<Canvas>().worldCamera =
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-
-        // register events
-        PlayerController.onPickUp += onCollecPickedUp;
     }
 
     // Update is called once per frame
@@ -50,12 +49,13 @@ public class UIController : MonoBehaviour
         }
     }
 
-    void onCollecPickedUp() {
-        isPickedUp = true;
+    public void prepareDrop() {
         nearbyPrompt.GetComponent<Text>().text = "R to put down";
     }
 
-    private void OnDisable() {
-        PlayerController.onPickUp -= onCollecPickedUp;
+    public void cancelDrop() {
+        nearbyPrompt.GetComponent<Text>().text = " ";
     }
+
+    
 }
