@@ -147,6 +147,14 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""StartSotryboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""4857baa0-5678-4381-974f-ef373cdcfcd5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -158,6 +166,17 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2d16cea-105e-42de-9b73-2dadefe37e16"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartSotryboard"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -177,6 +196,7 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
+        m_Menu_StartSotryboard = m_Menu.FindAction("StartSotryboard", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -300,11 +320,13 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Menu;
     private IMenuActions m_MenuActionsCallbackInterface;
     private readonly InputAction m_Menu_Pause;
+    private readonly InputAction m_Menu_StartSotryboard;
     public struct MenuActions
     {
         private @ControllerStuff m_Wrapper;
         public MenuActions(@ControllerStuff wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_Menu_Pause;
+        public InputAction @StartSotryboard => m_Wrapper.m_Menu_StartSotryboard;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -317,6 +339,9 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnPause;
+                @StartSotryboard.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnStartSotryboard;
+                @StartSotryboard.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnStartSotryboard;
+                @StartSotryboard.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnStartSotryboard;
             }
             m_Wrapper.m_MenuActionsCallbackInterface = instance;
             if (instance != null)
@@ -324,6 +349,9 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @StartSotryboard.started += instance.OnStartSotryboard;
+                @StartSotryboard.performed += instance.OnStartSotryboard;
+                @StartSotryboard.canceled += instance.OnStartSotryboard;
             }
         }
     }
@@ -340,5 +368,6 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
     public interface IMenuActions
     {
         void OnPause(InputAction.CallbackContext context);
+        void OnStartSotryboard(InputAction.CallbackContext context);
     }
 }

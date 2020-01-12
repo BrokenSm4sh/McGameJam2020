@@ -134,6 +134,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "StartSotryboard",
+                    "type": "Button",
+                    "id": "4857baa0-5678-4381-974f-ef373cdcfcd5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -145,6 +153,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2d16cea-105e-42de-9b73-2dadefe37e16",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartSotryboard",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
