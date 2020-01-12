@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private  Canvas gameOverScreen;
+
+    [SerializeField]
+    private RawImage startScreen;
 
     private bool isPaused;
     private ControllerStuff controls; 
@@ -16,8 +21,10 @@ public class GameManager : MonoBehaviour
     {
         controls = new ControllerStuff();
         controls.Menu.Pause.performed += ctx => ToggleGame();
+        controls.Menu.Pause.performed += ctx => ToggleGame();
         AppManager.SetGameInstance(this);
-        isPaused = false;
+        isPaused = true;
+        startScreen.enabled = true;
     }
 
     // Update is called once per frame
@@ -69,6 +76,10 @@ public class GameManager : MonoBehaviour
     } 
     private void ContinueGame()
     {
+        if (startScreen.enabled)
+        {
+            startScreen.enabled = false;
+        }
         Time.timeScale = 1;
         isPaused = false;
         //pausePanel.SetActive(false);

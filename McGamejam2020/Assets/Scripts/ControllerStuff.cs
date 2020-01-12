@@ -57,6 +57,14 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Drop"",
+                    ""type"": ""Button"",
+                    ""id"": ""0ecb80db-266e-411d-a05b-b97a76e7a1f7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -114,6 +122,17 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                     ""action"": ""PickUP"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""41c62360-f83a-46b7-93e2-89157e334ddd"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -154,6 +173,7 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
         m_Gameplay_SpeedBoostL = m_Gameplay.FindAction("SpeedBoostL", throwIfNotFound: true);
         m_Gameplay_SpeedBoostR = m_Gameplay.FindAction("SpeedBoostR", throwIfNotFound: true);
         m_Gameplay_PickUP = m_Gameplay.FindAction("PickUP", throwIfNotFound: true);
+        m_Gameplay_Drop = m_Gameplay.FindAction("Drop", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
@@ -211,6 +231,7 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_SpeedBoostL;
     private readonly InputAction m_Gameplay_SpeedBoostR;
     private readonly InputAction m_Gameplay_PickUP;
+    private readonly InputAction m_Gameplay_Drop;
     public struct GameplayActions
     {
         private @ControllerStuff m_Wrapper;
@@ -220,6 +241,7 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
         public InputAction @SpeedBoostL => m_Wrapper.m_Gameplay_SpeedBoostL;
         public InputAction @SpeedBoostR => m_Wrapper.m_Gameplay_SpeedBoostR;
         public InputAction @PickUP => m_Wrapper.m_Gameplay_PickUP;
+        public InputAction @Drop => m_Wrapper.m_Gameplay_Drop;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -244,6 +266,9 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                 @PickUP.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickUP;
                 @PickUP.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickUP;
                 @PickUP.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickUP;
+                @Drop.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDrop;
+                @Drop.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDrop;
+                @Drop.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDrop;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -263,6 +288,9 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                 @PickUP.started += instance.OnPickUP;
                 @PickUP.performed += instance.OnPickUP;
                 @PickUP.canceled += instance.OnPickUP;
+                @Drop.started += instance.OnDrop;
+                @Drop.performed += instance.OnDrop;
+                @Drop.canceled += instance.OnDrop;
             }
         }
     }
@@ -307,6 +335,7 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
         void OnSpeedBoostL(InputAction.CallbackContext context);
         void OnSpeedBoostR(InputAction.CallbackContext context);
         void OnPickUP(InputAction.CallbackContext context);
+        void OnDrop(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
