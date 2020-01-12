@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpAvailableDistance: 5
+  isPickedUp: 0
 --- !u!1 &5390294073748971008
 GameObject:
   m_ObjectHideFlags: 0
