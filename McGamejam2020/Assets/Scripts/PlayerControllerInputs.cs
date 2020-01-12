@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms;
 
 public class PlayerControllerInputs : MonoBehaviour
@@ -31,7 +32,7 @@ public class PlayerControllerInputs : MonoBehaviour
         prevButton = LastPressed.none;
         boost = speed;
         controls = new ControllerStuff();
-        controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
+        controls.Gameplay.Move.performed += ctx => Movementing(ctx);
         controls.Gameplay.Move.canceled += ctx => move = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.performed += ctx => Debug.Log("moving");
         controls.Gameplay.Move.canceled += ctx => Debug.Log("move stop");
@@ -42,7 +43,6 @@ public class PlayerControllerInputs : MonoBehaviour
 
     void Update()
     {
-        Vector3 m = new Vector3(5 * move.x, 0, 5 * move.y) * Time.deltaTime;
         //Source Nimso Ny
         Vector3 camF = Camera.main.transform.forward;
         Vector3 camR = Camera.main.transform.right;
@@ -50,9 +50,8 @@ public class PlayerControllerInputs : MonoBehaviour
         camR.y = 0;
         camF = camF.normalized;
         camR = camR.normalized;
-        
-       
         transform.position +=  (camF * move.y + camR * move.x) * (Time.deltaTime * boost);
+        Camera.main.transform.position +=  (camF * move.y + camR * move.x) * (Time.deltaTime * boost);
         
         
     }
@@ -132,5 +131,13 @@ public class PlayerControllerInputs : MonoBehaviour
         {
             boost = speed;
         }
+    }
+
+    public void Movementing(InputAction.CallbackContext ctx)
+    {
+        move = ctx.ReadValue<Vector2>();
+        Vector3 m = new Vector3(5 * move.x, 0, 5 * move.y) * Time.deltaTime;
+        Quaternion rotation = Quaternion.LookRotation(m, Vector3.up);
+        transform.rotation =Quaternion.Euler(rotation.eulerAngles + Camera.main.transform.forward);
     }
 }

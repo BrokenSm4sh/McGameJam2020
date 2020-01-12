@@ -21,7 +21,6 @@ public class PlayerStamina : MonoBehaviour
         if (staminaPoints <= 0)
         {
             AppManager.GetGameInstance().ForceGameOver();
-            
         }
     }
     

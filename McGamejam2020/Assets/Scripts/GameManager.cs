@@ -9,10 +9,13 @@ public class GameManager : MonoBehaviour
     private  Canvas gameOverScreen;
 
     private bool isPaused;
+    private ControllerStuff controls; 
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        controls = new ControllerStuff();
+        controls.Menu.Pause.performed += ctx => ToggleGame();
         AppManager.SetGameInstance(this);
         isPaused = false;
     }
@@ -30,17 +33,31 @@ public class GameManager : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.P))
         {
-            if (!isPaused)
-            {
-                PauseGame();
-            }
-            else
-            {
-                ContinueGame();
-            }
+            ToggleGame();
         }
-       
-        
+    }
+    
+    private void OnEnable()
+    {
+        controls.Menu.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Menu.Disable();
+    }
+
+    private void ToggleGame()
+    {
+        Debug.Log("pause?");
+        if (!isPaused)
+        {
+            PauseGame();
+        }
+        else
+        {
+            ContinueGame();
+        }
     }
 
     private void PauseGame()
