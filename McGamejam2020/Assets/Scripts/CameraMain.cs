@@ -21,23 +21,21 @@ public class CameraMain : MonoBehaviour
         controls = new ControllerStuff();
 
         controls.Gameplay.MoveCamera.performed += ctx => move = ctx.ReadValue<Vector2>();
-        controls.Gameplay.MoveCamera.canceled += ctx => move = ctx.ReadValue<Vector2>();;
+        controls.Gameplay.MoveCamera.canceled += ctx => move = ctx.ReadValue<Vector2>();
+        ;
         controls.Gameplay.MoveCamera.canceled += ctx => transform.LookAt(subject.transform, Vector3.up);
         ;
         controls.Gameplay.MoveCamera.performed += ctx => Debug.Log("moving");
         controls.Gameplay.MoveCamera.canceled += ctx => Debug.Log("move stop");
         transform.position = subject.transform.position + offset;
-
     }
-    
-    
-    
+
 
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.RotateAround(subject.transform.position, new Vector3(0, -move.x, 0), 1);
-        
+        transform.RotateAround(subject.transform.position, new Vector3(0, -3*Time.deltaTime*move.x, 0), 1);
+
         // if (transform.position.y >= 2.3)
         // {
         //     transform.position = (new Vector3(transform.position.x, 2.3f,transform.position.z ));
@@ -80,12 +78,20 @@ public class CameraMain : MonoBehaviour
         // {
         //     // transform.position = subject.transform.position + offset;
         // }
-        
-         transform.LookAt(subject.transform, Vector3.up);
+
+        transform.LookAt(subject.transform, Vector3.up);
         // Vector3 m = new Vector3(5 * move.x, 0, 5 * move.y) * Time.deltaTime;
         // transform.Translate(m);
+
+        transform.position = new Vector3(transform.position.x,
+            Mathf.Clamp(transform.position.y, 1.5f, 10f),
+            transform.position.z);
+        transform.localEulerAngles = new Vector3(
+                Mathf.Clamp(transform.localEulerAngles.x, 0, 87f),
+                transform.localEulerAngles.y,
+                transform.localEulerAngles.z);
     }
-    
+
     private void OnEnable()
     {
         controls.Gameplay.Enable();
@@ -98,8 +104,5 @@ public class CameraMain : MonoBehaviour
 
     private void CameraUpDown(InputAction.CallbackContext ctx)
     {
-        
-        
-        
     }
 }

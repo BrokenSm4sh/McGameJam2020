@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ToonWater
-  m_Shader: {fileID: 4800000, guid: f24809d953f26f64b9c352c89807da80, type: 3}
+  m_Shader: {fileID: 4800000, guid: 6d0bd6a7d124d6f4c9546ff4db6eacdf, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -60,11 +60,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SurfaceDistortion:
-        m_Texture: {fileID: 2800000, guid: c53bb6b8c40b02141be3fdec5cc582e9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9bd70d1915aedd543a365a3ec7f0e685, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SurfaceNoise:
-        m_Texture: {fileID: 2800000, guid: e182ac5d3b797044fb29f3fa2acc3708, type: 3}
+        m_Texture: {fileID: 2800000, guid: 03ba0335c1f511c4d821595b8769fff7, type: 3}
         m_Scale: {x: 1, y: 4}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -73,6 +73,8 @@ Material:
     - _DepthMaxDistance: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _FoamMaxDistance: 0.4
+    - _FoamMinDistance: 0.04
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -94,5 +96,6 @@ Material:
     - _DepthGradientDeep: {r: 0.086274505, g: 0.40704754, b: 1, a: 0.7490196}
     - _DepthGradientShallow: {r: 0.3254272, g: 0.8078549, b: 0.9716981, a: 0.7254902}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShorelineColor: {r: 1, g: 1, b: 1, a: 1}
     - _SurfaceNoiseScroll: {r: 0.03, g: 0.03, b: 0, a: 0}
