@@ -41,8 +41,8 @@ public class PlayerControllerInputs : MonoBehaviour
         controls.Gameplay.SpeedBoostR.canceled += ctx => RightPress();
 
         controls.Gameplay.PickUP.performed += ctx => PickupAction();
-
     }
+
 
     void Update()
     {
@@ -149,6 +149,10 @@ public class PlayerControllerInputs : MonoBehaviour
     public void PickupAction()
     {
         var obj = GameObject.FindGameObjectWithTag("okToPickUp");
-            if (obj.GetComponent<CollectableController>().pickUp();
+        if (obj != null)
+        {
+            obj.GetComponent<CollectableController>().pickUp();
+        }
     }
+    
 }
