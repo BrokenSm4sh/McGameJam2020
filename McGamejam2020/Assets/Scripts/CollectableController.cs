@@ -33,7 +33,7 @@ public class CollectableController : MonoBehaviour
     {
         // if player within pick up radius, change tag to okToPickUp
         if (Vector3.Distance(gameObject.transform.position, player.transform.position) <= PICK_UP_RADIUS) {
-            if (gameObject.tag != "pickedUpCollectable") {
+            if (gameObject.tag != "pickedUpCollectable" && gameObject.tag != "usedCollectable") {
                 gameObject.tag = "okToPickUp";
             }
             
@@ -48,6 +48,7 @@ public class CollectableController : MonoBehaviour
             player.transform.position.y,
             player.transform.position.z + CollectableZOffsetFromPlayer);
         gameObject.tag = "pickedUpCollectable";
+        gameObject.GetComponent<WaterBob>().enabled = false;
         pickupUIInstance.GetComponent<CollectableUIController>().isPickedUp = true;
         pickupUIInstance.transform.GetChild(0).gameObject
             .GetComponent<Text>().text = " ";
@@ -56,7 +57,9 @@ public class CollectableController : MonoBehaviour
     public void drop(Vector3 dropOffLocation) {
         gameObject.transform.parent = null;
         gameObject.transform.position = dropOffLocation;
+        gameObject.GetComponent<WaterBob>().enabled = true;
         pickupUIInstance.transform.GetChild(0).gameObject
             .GetComponent<Text>().text = " ";
+        gameObject.tag = "usedCollectable";
     }
 }

@@ -20,28 +20,30 @@ public class DropOffPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject pickedUpCollec = GameObject.FindGameObjectWithTag("pickedUpCollectable");
-        if (pickedUpCollec != null &&
-            Vector3.Distance(transform.position,
-            pickedUpCollec.transform.position) <= DROP_OBJECT_DISTANCE){
+        if (GameObject.FindGameObjectWithTag("pickedUpCollectable") != null) {
+            GameObject pickedUpCollec = GameObject.FindGameObjectWithTag("pickedUpCollectable");
+            if (pickedUpCollec != null &&
+                Vector3.Distance(transform.position,
+                pickedUpCollec.transform.position) <= DROP_OBJECT_DISTANCE) {
 
-            if (dropMsgSet == false) {
-                pickedUpCollec.transform.GetChild(0)
-                    .gameObject.GetComponent<CollectableUIController>().prepareDrop();
-                dropMsgSet = true;
-            }
-            
-        } else {
-            if (dropMsgSet == true) {
-                pickedUpCollec.transform.GetChild(0)
-                    .gameObject.GetComponent<CollectableUIController>().cancelDrop();
-                dropMsgSet = false;
-            }
-        }
+                if (dropMsgSet == false && pickedUpCollec.transform.GetChild(0) != null) {
+                    pickedUpCollec.transform.GetChild(0)
+                        .gameObject.GetComponent<CollectableUIController>().prepareDrop();
+                    dropMsgSet = true;
+                }
 
-        if (Input.GetKeyDown(KeyCode.R)) {
-            pickedUpCollec.GetComponent<CollectableController>()
-                .drop((gameObject.transform.position + pickedUpCollec.transform.position) / 2f);
+            } else {
+                if (dropMsgSet == true && pickedUpCollec.transform.GetChild(0) != null) {
+                    pickedUpCollec.transform.GetChild(0)
+                        .gameObject.GetComponent<CollectableUIController>().cancelDrop();
+                    dropMsgSet = false;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.R)) {
+                pickedUpCollec.GetComponent<CollectableController>()
+                    .drop((gameObject.transform.position + pickedUpCollec.transform.position) / 2f);
+            }
         }
     }
 }

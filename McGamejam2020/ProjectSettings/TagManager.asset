@@ -8,7 +8,9 @@ TagManager:
   - pickedUpCollectable
   - okToPickUp
   - okToFloat
-  - FloatOnObject
+  - usedCollectable
+  - trash
+  - FloatingCarrier
   layers:
   - Default
   - TransparentFX
