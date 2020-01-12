@@ -32,8 +32,8 @@ public class PlaceItems : MonoBehaviour
                 noLuck = 0;
                 do
                 {
-                     generatedX = Random.Range(0, 1000);
-                     generatedZ = Random.Range(0, 1000);
+                     generatedX = Random.Range(-125, 125);
+                     generatedZ = Random.Range(-125, 125);
                     currentPos = new KeyValuePair<float, float>(generatedX, generatedZ);
                     noLuck++;
                 } while (!NotInRange(currentPos, positions) || noLuck < 255);
