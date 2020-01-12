@@ -189,7 +189,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 474350569898225216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77ad68dbda1c2ed49aba64605c37d334, type: 3}
+  m_Script: {fileID: 11500000, guid: e78ea1ead1ef0cf4ea71c5b384148ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpAvailableDistance: 10
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fce7a42126dd19d48b6af10a8cf2dd18, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fa6c9a1c00f364b44b33e1aaa867c297, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
