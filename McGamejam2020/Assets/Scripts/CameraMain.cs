@@ -27,7 +27,7 @@ public class CameraMain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.RotateAround(subject.transform.position, new Vector3(0, move.x, 0), 1);
+        transform.RotateAround(subject.transform.position, new Vector3(0, -move.x, 0), 1);
         
         // if (transform.position.y >= 2.3)
         // {
