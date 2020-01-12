@@ -10,7 +10,7 @@ public class PlaceItems : MonoBehaviour
     public class ObjectsToPlace 
     {
         public GameObject objectToPlace;
-        [Range(1,30)]
+        [Range(1,5)]
         public int amountPerObject;
     }
 
