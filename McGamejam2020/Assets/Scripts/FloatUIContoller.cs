@@ -31,7 +31,7 @@ public class FloatUIContoller : MonoBehaviour
         nearbyPrompt.text = "F to float";
     }
 
-    public void startedFloat() {
+    public void whenFloating() {
         nearbyPrompt.text = "V to stop floating";
     }
 

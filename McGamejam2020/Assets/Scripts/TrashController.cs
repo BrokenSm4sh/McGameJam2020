@@ -75,10 +75,11 @@ public class TrashController : MonoBehaviour
             player.transform.position.z);
         carrier.transform.position =
             new Vector3(player.transform.position.x, TRASH_FLOAT_OFFSET, player.transform.position.z);
-        floatingUIInstance.GetComponent<FloatUIContoller>().cancelFloatPrompt();
+        floatingUIInstance.GetComponent<FloatUIContoller>().whenFloating();
         isFloating = true;
 
         audioPlayer.PlayOneShot(startFloatingAudio);
+        player.GetComponent<WaterBob>().enabled = true;
 
     }
 
@@ -92,5 +93,7 @@ public class TrashController : MonoBehaviour
             player.transform.position.x,
             yBeforeFloating,
             player.transform.position.z);
+
+        player.GetComponent<WaterBob>().enabled = false;
     }
 }
