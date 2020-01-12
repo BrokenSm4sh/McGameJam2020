@@ -6,7 +6,6 @@ public class CameraMain : MonoBehaviour
 {
     public GameObject subject;
 
-    private Vector3 offset;            //Private variable to store the offset distance between the player and camera
 
     private bool up = true;
     private float threshold = 0;
@@ -15,7 +14,6 @@ public class CameraMain : MonoBehaviour
     void Start()
     {
         //Calculate and store the offset value by getting the distance between the player's position and camera's position.
-        offset = transform.position - subject.transform.position;
     }
 
     // Update is called once per frame
