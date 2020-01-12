@@ -87,9 +87,9 @@ public class CameraMain : MonoBehaviour
             Mathf.Clamp(transform.position.y, 1.5f, 10f),
             transform.position.z);
         transform.localEulerAngles = new Vector3(
-                Mathf.Clamp(transform.localEulerAngles.x, 0, 87f),
-                transform.localEulerAngles.y,
-                transform.localEulerAngles.z);
+            Mathf.Clamp(transform.localEulerAngles.x, 0, 87f),
+            transform.localEulerAngles.y,
+            transform.localEulerAngles.z);
     }
 
     private void OnEnable()

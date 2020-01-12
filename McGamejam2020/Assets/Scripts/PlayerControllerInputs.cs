@@ -14,6 +14,7 @@ public class PlayerControllerInputs : MonoBehaviour
         left,
         none = -1,
     }
+
     private ControllerStuff controls;
 
     private Vector2 move;
@@ -25,7 +26,6 @@ public class PlayerControllerInputs : MonoBehaviour
     private bool rPressed;
     private bool lPressed;
 
-    
 
     private void Awake()
     {
@@ -50,10 +50,10 @@ public class PlayerControllerInputs : MonoBehaviour
         camR.y = 0;
         camF = camF.normalized;
         camR = camR.normalized;
-        transform.position +=  (camF * move.y + camR * move.x) * (Time.deltaTime * boost);
-        Camera.main.transform.position +=  (camF * move.y + camR * move.x) * (Time.deltaTime * boost);
-        
-        
+        transform.position += (camF * move.y + camR * move.x) * (Time.deltaTime * boost);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -125, 125), transform.position.y,
+            Mathf.Clamp(transform.position.z, -125, 125));
+        Camera.main.transform.position += (camF * move.y + camR * move.x) * (Time.deltaTime * boost);
     }
 
     private void OnEnable()
@@ -79,6 +79,7 @@ public class PlayerControllerInputs : MonoBehaviour
         {
             lPressed = false;
         }
+
         if (lPressed && rPressed)
         {
             lPressed = false;
@@ -86,13 +87,13 @@ public class PlayerControllerInputs : MonoBehaviour
             boost = 10 * speed;
             Debug.Log("BOOST");
             StartCoroutine(DecreaseBoost());
-
         }
         else
         {
             boost = speed;
         }
     }
+
     private void RightPress()
     {
         Debug.Log("r press");
@@ -105,6 +106,7 @@ public class PlayerControllerInputs : MonoBehaviour
         {
             rPressed = false;
         }
+
         if (lPressed && rPressed)
         {
             lPressed = false;
@@ -123,7 +125,7 @@ public class PlayerControllerInputs : MonoBehaviour
     {
         while (boost >= speed)
         {
-            boost -= boost*speed/60;
+            boost -= boost * speed / 60;
             yield return null;
         }
 
@@ -138,6 +140,6 @@ public class PlayerControllerInputs : MonoBehaviour
         move = ctx.ReadValue<Vector2>();
         Vector3 m = new Vector3(5 * move.x, 0, 5 * move.y) * Time.deltaTime;
         Quaternion rotation = Quaternion.LookRotation(m, Vector3.up);
-        transform.rotation =Quaternion.Euler(rotation.eulerAngles + Camera.main.transform.forward);
+        transform.rotation = Quaternion.Euler(rotation.eulerAngles + Camera.main.transform.forward);
     }
 }
