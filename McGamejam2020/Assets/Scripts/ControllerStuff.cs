@@ -57,14 +57,6 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""Drop"",
-                    ""type"": ""Button"",
-                    ""id"": ""0ecb80db-266e-411d-a05b-b97a76e7a1f7"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -122,17 +114,6 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                     ""action"": ""PickUP"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""41c62360-f83a-46b7-93e2-89157e334ddd"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Drop"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -144,14 +125,6 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                     ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""ef38494e-eeef-4325-ad0d-d800878ee777"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""StartSotryboard"",
-                    ""type"": ""Button"",
-                    ""id"": ""4857baa0-5678-4381-974f-ef373cdcfcd5"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -168,17 +141,6 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c2d16cea-105e-42de-9b73-2dadefe37e16"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""StartSotryboard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -192,11 +154,9 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
         m_Gameplay_SpeedBoostL = m_Gameplay.FindAction("SpeedBoostL", throwIfNotFound: true);
         m_Gameplay_SpeedBoostR = m_Gameplay.FindAction("SpeedBoostR", throwIfNotFound: true);
         m_Gameplay_PickUP = m_Gameplay.FindAction("PickUP", throwIfNotFound: true);
-        m_Gameplay_Drop = m_Gameplay.FindAction("Drop", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
-        m_Menu_StartSotryboard = m_Menu.FindAction("StartSotryboard", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,7 +211,6 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_SpeedBoostL;
     private readonly InputAction m_Gameplay_SpeedBoostR;
     private readonly InputAction m_Gameplay_PickUP;
-    private readonly InputAction m_Gameplay_Drop;
     public struct GameplayActions
     {
         private @ControllerStuff m_Wrapper;
@@ -261,7 +220,6 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
         public InputAction @SpeedBoostL => m_Wrapper.m_Gameplay_SpeedBoostL;
         public InputAction @SpeedBoostR => m_Wrapper.m_Gameplay_SpeedBoostR;
         public InputAction @PickUP => m_Wrapper.m_Gameplay_PickUP;
-        public InputAction @Drop => m_Wrapper.m_Gameplay_Drop;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -286,9 +244,6 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                 @PickUP.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickUP;
                 @PickUP.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickUP;
                 @PickUP.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickUP;
-                @Drop.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDrop;
-                @Drop.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDrop;
-                @Drop.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDrop;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -308,9 +263,6 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                 @PickUP.started += instance.OnPickUP;
                 @PickUP.performed += instance.OnPickUP;
                 @PickUP.canceled += instance.OnPickUP;
-                @Drop.started += instance.OnDrop;
-                @Drop.performed += instance.OnDrop;
-                @Drop.canceled += instance.OnDrop;
             }
         }
     }
@@ -320,13 +272,11 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Menu;
     private IMenuActions m_MenuActionsCallbackInterface;
     private readonly InputAction m_Menu_Pause;
-    private readonly InputAction m_Menu_StartSotryboard;
     public struct MenuActions
     {
         private @ControllerStuff m_Wrapper;
         public MenuActions(@ControllerStuff wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_Menu_Pause;
-        public InputAction @StartSotryboard => m_Wrapper.m_Menu_StartSotryboard;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -339,9 +289,6 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnPause;
-                @StartSotryboard.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnStartSotryboard;
-                @StartSotryboard.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnStartSotryboard;
-                @StartSotryboard.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnStartSotryboard;
             }
             m_Wrapper.m_MenuActionsCallbackInterface = instance;
             if (instance != null)
@@ -349,9 +296,6 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
-                @StartSotryboard.started += instance.OnStartSotryboard;
-                @StartSotryboard.performed += instance.OnStartSotryboard;
-                @StartSotryboard.canceled += instance.OnStartSotryboard;
             }
         }
     }
@@ -363,11 +307,9 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
         void OnSpeedBoostL(InputAction.CallbackContext context);
         void OnSpeedBoostR(InputAction.CallbackContext context);
         void OnPickUP(InputAction.CallbackContext context);
-        void OnDrop(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
         void OnPause(InputAction.CallbackContext context);
-        void OnStartSotryboard(InputAction.CallbackContext context);
     }
 }

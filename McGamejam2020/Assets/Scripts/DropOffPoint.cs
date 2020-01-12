@@ -10,57 +10,39 @@ public class DropOffPoint : MonoBehaviour
     public GameObject dropObjectUIPrefab;
     private GameObject dropObjectUIInstance;
     private bool dropMsgSet = false;
-    private ControllerStuff controls;
-    private GameObject pickedUpCollec;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        controls = new ControllerStuff();
-        controls.Gameplay.Drop.performed += ctx => DropAction();
-    }
 
-    private void DropAction()
-    {
-        if (pickedUpCollec != null)
-        {
-            pickedUpCollec.GetComponent<CollectableController>()
-                .drop((gameObject.transform.position + pickedUpCollec.transform.position) / 2f);
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        pickedUpCollec = GameObject.FindGameObjectWithTag("pickedUpCollectable");
-        if (pickedUpCollec != null)
-        {
-            pickedUpCollec = GameObject.FindGameObjectWithTag("pickedUpCollectable");
+        if (GameObject.FindGameObjectWithTag("pickedUpCollectable") != null) {
+            GameObject pickedUpCollec = GameObject.FindGameObjectWithTag("pickedUpCollectable");
             if (pickedUpCollec != null &&
                 Vector3.Distance(transform.position,
-                    pickedUpCollec.transform.position) <= DROP_OBJECT_DISTANCE)
-            {
-                if (dropMsgSet == false && pickedUpCollec.transform.GetChild(0) != null)
-                {
+                pickedUpCollec.transform.position) <= DROP_OBJECT_DISTANCE) {
+
+                if (dropMsgSet == false && pickedUpCollec.transform.GetChild(0) != null) {
                     pickedUpCollec.transform.GetChild(0)
                         .gameObject.GetComponent<CollectableUIController>().prepareDrop();
                     dropMsgSet = true;
                 }
-            }
-            else
-            {
-                if (dropMsgSet == true && pickedUpCollec.transform.GetChild(0) != null)
-                {
+
+            } else {
+                if (dropMsgSet == true && pickedUpCollec.transform.GetChild(0) != null) {
                     pickedUpCollec.transform.GetChild(0)
                         .gameObject.GetComponent<CollectableUIController>().cancelDrop();
                     dropMsgSet = false;
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                // pickedUpCollec.GetComponent<CollectableController>()
-                //     .drop((gameObject.transform.position + pickedUpCollec.transform.position) / 2f);
+            if (Input.GetKeyDown(KeyCode.R)) {
+                pickedUpCollec.GetComponent<CollectableController>()
+                    .drop((gameObject.transform.position + pickedUpCollec.transform.position) / 2f);
             }
         }
     }

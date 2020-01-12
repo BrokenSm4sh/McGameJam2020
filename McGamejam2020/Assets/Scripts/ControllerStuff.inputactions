@@ -44,14 +44,6 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "Drop",
-                    "type": "Button",
-                    "id": "0ecb80db-266e-411d-a05b-b97a76e7a1f7",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -109,17 +101,6 @@
                     "action": "PickUP",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "41c62360-f83a-46b7-93e2-89157e334ddd",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Drop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
@@ -134,14 +115,6 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "StartSotryboard",
-                    "type": "Button",
-                    "id": "4857baa0-5678-4381-974f-ef373cdcfcd5",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -153,17 +126,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c2d16cea-105e-42de-9b73-2dadefe37e16",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "StartSotryboard",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
