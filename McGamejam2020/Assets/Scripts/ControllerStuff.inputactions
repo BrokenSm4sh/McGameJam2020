@@ -1,0 +1,90 @@
+{
+    "name": "ControllerStuff",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "6ee0889b-f30e-44e2-8634-90c5f56cddf1",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "ccf776a6-f966-4641-80e5-73607f9ea07a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MoveCamera",
+                    "type": "Button",
+                    "id": "0c1818f1-de86-4d85-80a6-ec9e23aac63b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SpeedBoostL",
+                    "type": "Button",
+                    "id": "3d3ddd3a-6a0d-4a37-9464-b82d43ac9cd5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SpeedBoostR",
+                    "type": "Button",
+                    "id": "8113b538-c002-4bf5-8e0f-393ef9e94e9c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0af65425-722d-484c-9249-d666599919f6",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8ea80e2c-78b1-4089-8f09-65232a15b818",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2f599e58-9d8d-47f3-b2b2-f6f7b0c46013",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpeedBoostL",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dfabd94c-02b7-42da-af20-0e3383ea51e4",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpeedBoostR",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
