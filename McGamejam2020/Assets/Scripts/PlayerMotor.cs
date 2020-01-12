@@ -30,11 +30,14 @@ public class PlayerMotor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z)) {
             curPressedKey = 'L';
             velocityLerpTime = 0;
+            Debug.Log("L pressed");
         } else if (Input.GetKeyDown(KeyCode.C)) {
             curPressedKey = 'R';
             velocityLerpTime = 0;
+            Debug.Log("R pressed");
         } else {
             curPressedKey = ' ';
+            //Debug.Log("Nothing Pressed");
         }
 
         if (curPressedKey != lastPressedKey && curPressedKey != ' ') {

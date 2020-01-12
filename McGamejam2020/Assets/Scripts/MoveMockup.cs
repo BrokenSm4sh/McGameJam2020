@@ -18,22 +18,22 @@ public class MoveMockup : MonoBehaviour
         if(Input.GetKey(KeyCode.W))
         {
             Debug.Log("w");
-            rgbd.velocity += Camera.main.transform.forward;
+            rgbd.velocity += 40 *Camera.main.transform.forward;
         }
         if (Input.GetKey(KeyCode.A))
         {
             Debug.Log("a");
-            rgbd.velocity += -Camera.main.transform.right;
+            rgbd.velocity += -40*Camera.main.transform.right;
         }
         if (Input.GetKey(KeyCode.S))
         {
             Debug.Log("s");
-            rgbd.velocity += -Camera.main.transform.forward;
+            rgbd.velocity += -30*Camera.main.transform.forward;
         }
         if (Input.GetKey(KeyCode.D))
         {
             Debug.Log("d");
-            rgbd.velocity += Camera.main.transform.right;
+            rgbd.velocity += 40*Camera.main.transform.right;
         }
     }
 }
