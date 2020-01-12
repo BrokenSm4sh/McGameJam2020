@@ -44,9 +44,9 @@ ExportedObj/
 *.VC.db
 
 # Unity3D generated meta files
-*.pidb.meta
-*.pdb.meta
-*.mdb.meta
+# *.pidb.meta
+# *.pdb.meta
+# *.mdb.meta
 
 # Unity3D generated file on crash reports
 sysinfo.txt
@@ -1456,5 +1456,5 @@ McGamejam2020/Library/shadercompiler-UnityShaderCompiler.exe0.log
 McGamejam2020/Library/shadercompiler-UnityShaderCompiler.exe1.log
 McGamejam2020/Library/shadercompiler-UnityShaderCompiler.exe2.log
 McGamejam2020/Library/StateCache/SceneView/0d8617-mainStage.json
-*.meta
+# *.meta
 *.info
