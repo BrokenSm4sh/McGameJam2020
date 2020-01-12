@@ -13,6 +13,8 @@ public class TrashController : MonoBehaviour
     public float FLOATABLE_DISTANCE;
     public float TRASH_FLOAT_OFFSET;
     public float PLAYER_FLOAT_OFFSET;
+    public AudioClip startFloatingAudio;
+    private AudioSource audioPlayer;
     
     private bool isFloating = false;
     private bool floatingPrepared = false;
@@ -28,6 +30,7 @@ public class TrashController : MonoBehaviour
             gameObject.transform.position.z),
             Quaternion.identity, gameObject.transform);
         gameObject.tag = "trash";
+        audioPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -75,11 +78,14 @@ public class TrashController : MonoBehaviour
         floatingUIInstance.GetComponent<FloatUIContoller>().cancelFloatPrompt();
         isFloating = true;
 
+        audioPlayer.PlayOneShot(startFloatingAudio);
+
     }
 
     void stopFloating() {
         GameObject carrier = GameObject.FindGameObjectWithTag("FloatingCarrier");
         carrier.transform.parent = null;
+        if (audioPlayer.isPlaying) audioPlayer.Stop();
         carrier.SetActive(false);
         isFloating = false;
         player.transform.position = new Vector3(

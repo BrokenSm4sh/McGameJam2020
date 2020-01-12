@@ -14,6 +14,10 @@ public class CollectableController : MonoBehaviour
     public GameObject pickupUIPrefab;
     private GameObject pickupUIInstance;
 
+    public AudioClip pickUpAudio;
+    public AudioClip dropDownAudio;
+    private AudioSource audioPlayer;
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +29,7 @@ public class CollectableController : MonoBehaviour
             transform.position.z), 
             Quaternion.identity,
             gameObject.transform);
+        audioPlayer = GetComponent<AudioSource>();
 
     }
 
@@ -52,6 +57,8 @@ public class CollectableController : MonoBehaviour
         pickupUIInstance.GetComponent<CollectableUIController>().isPickedUp = true;
         pickupUIInstance.transform.GetChild(0).gameObject
             .GetComponent<Text>().text = " ";
+
+        audioPlayer.PlayOneShot(pickUpAudio);
     }
 
     public void drop(Vector3 dropOffLocation) {
