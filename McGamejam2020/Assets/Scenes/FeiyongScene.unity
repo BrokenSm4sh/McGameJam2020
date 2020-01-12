@@ -227,10 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1bb647a73d7814483bdf9c30b16d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1576738041}
-  DROP_OBJECT_DISTANCE: 5
-  DROP_OBJECT_UI_Y_OFFSET: 0
-  dropObjectUIPrefab: {fileID: 0}
+  player: {fileID: 0}
 --- !u!136 &222803174
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -299,7 +296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 222803172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 517.3, y: 1.04, z: 331.7}
+  m_LocalPosition: {x: 16.278034, y: 1.04, z: 11.427268}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -649,7 +646,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374326206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 492.36, y: 2.21, z: 300.7}
+  m_LocalPosition: {x: 492.36, y: 2.21, z: 292.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -702,11 +699,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1576738041}
-  CollectableZOffsetFromPlayer: 1
-  PICK_UP_RADIUS: 5
+  CollectableZOffsetFromPlayer: 1.3
   pickUpUIYOffset: 0.7
-  pickupUIPrefab: {fileID: 474350569898225216, guid: 621cae10e06107b4ba29590b8b6b52af,
-    type: 3}
+  pickupUI: {fileID: 474350569898225216, guid: 621cae10e06107b4ba29590b8b6b52af, type: 3}
 --- !u!65 &1450190131
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -774,7 +769,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1450190129}
   m_LocalRotation: {x: 0.46193978, y: 0.19134173, z: 0.19134173, w: 0.84462327}
-  m_LocalPosition: {x: 496, y: 0.453, z: 316}
+  m_LocalPosition: {x: 13.88, y: 0.453, z: 21.23}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}

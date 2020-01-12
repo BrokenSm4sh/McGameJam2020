@@ -31,17 +31,23 @@ public class PlayerMotor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z)) {
             curPressedKey = 'L';
             velocityLerpTime = 0;
+            Debug.Log("L pressed");
         } else if (Input.GetKeyDown(KeyCode.C)) {
             curPressedKey = 'R';
             velocityLerpTime = 0;
+            Debug.Log("R pressed");
         } else {
             curPressedKey = ' ';
+            //Debug.Log("Nothing Pressed");
         }
 
         if (curPressedKey != lastPressedKey && curPressedKey != ' ') {
             // get input direction
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
+
+            Debug.Log("Horizontal: " + Input.GetAxis("Horizontal"));
+            Debug.Log("Vertical: " + Input.GetAxis("Vertical"));
 
             Vector3 direction = new Vector3(
                 (horizontalInput + Camera.transform.forward.x * 2f), 
@@ -57,6 +63,7 @@ public class PlayerMotor : MonoBehaviour
         // SmoothStep Velocity
         if (velocityLerpTime <= 1f) {
             rb.velocity *= Mathf.SmoothStep(MAX_SPEED, 0, velocityLerpTime);
+            Debug.Log("SmoothStep: " + Mathf.SmoothStep(MAX_SPEED, 0, velocityLerpTime));
             velocityLerpTime += VELOCIT_LERP_INCREMENT;
         } else {
             rb.velocity = new Vector3(0, 0, 0);
