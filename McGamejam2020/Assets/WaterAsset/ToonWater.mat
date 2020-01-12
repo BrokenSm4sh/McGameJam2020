@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ToonWater
-  m_Shader: {fileID: 4800000, guid: f24809d953f26f64b9c352c89807da80, type: 3}
+  m_Shader: {fileID: 4800000, guid: 6d0bd6a7d124d6f4c9546ff4db6eacdf, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0

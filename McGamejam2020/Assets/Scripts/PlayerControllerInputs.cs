@@ -39,6 +39,9 @@ public class PlayerControllerInputs : MonoBehaviour
 
         controls.Gameplay.SpeedBoostL.canceled += ctx => LeftPress();
         controls.Gameplay.SpeedBoostR.canceled += ctx => RightPress();
+
+        controls.Gameplay.PickUP.performed += ctx => PickupAction();
+
     }
 
     void Update()
@@ -141,5 +144,11 @@ public class PlayerControllerInputs : MonoBehaviour
         Vector3 m = new Vector3(5 * move.x, 0, 5 * move.y) * Time.deltaTime;
         Quaternion rotation = Quaternion.LookRotation(m, Vector3.up);
         transform.rotation = Quaternion.Euler(rotation.eulerAngles + Camera.main.transform.forward);
+    }
+
+    public void PickupAction()
+    {
+        var obj = GameObject.FindGameObjectWithTag("okToPickUp");
+            if (obj.GetComponent<CollectableController>().pickUp();
     }
 }

@@ -36,6 +36,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "PickUP",
+                    "type": "Button",
+                    "id": "9adf6a4e-bb3a-463b-820f-8145b43aa5a8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -80,6 +88,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SpeedBoostR",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "560aa526-bdff-46fb-b871-560bd3bd83fb",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PickUP",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
