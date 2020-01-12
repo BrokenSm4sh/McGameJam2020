@@ -88,7 +88,7 @@ public class @ControllerStuff : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""dfabd94c-02b7-42da-af20-0e3383ea51e4"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
